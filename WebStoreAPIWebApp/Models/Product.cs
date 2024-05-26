@@ -8,6 +8,6 @@
         public int Price { get; set; }
 
         public virtual ICollection<ProductCart> ProductCarts { get; set; } = new List<ProductCart>();
-        public virtual Category Category { get; set; }
+        public virtual Category? Category { get; set; }
     }
 }

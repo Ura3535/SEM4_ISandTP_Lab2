@@ -1,7 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using WebStoreAPIWebApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();
