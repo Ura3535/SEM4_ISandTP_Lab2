@@ -9,6 +9,8 @@ using WebStoreAPIWebApp.Models;
 
 namespace WebStoreAPIWebApp.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CartsController : Controller
     {
         private readonly WebStoreAPIContext _context;
