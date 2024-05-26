@@ -7,5 +7,7 @@
         public int Price { get; set; }
         public int StatusId { get; set; }
         public virtual ICollection<ProductCart> ProductCarts { get; set; } = new List<ProductCart>();
+        public virtual Customer Customer { get; set; }
+        public virtual CartStatus CartStatus { get; set; }
     }
 }

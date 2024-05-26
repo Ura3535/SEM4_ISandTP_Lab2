@@ -9,7 +9,7 @@ namespace WebStoreAPIWebApp.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCart> ProductCarts { get; set; }
-        public virtual DbSet<Status> Statuses { get; set; }
+        public virtual DbSet<CartStatus> CartStatuses { get; set; }
 
         public WebStoreAPIContext(DbContextOptions<WebStoreAPIContext> options) 
         : base(options)
