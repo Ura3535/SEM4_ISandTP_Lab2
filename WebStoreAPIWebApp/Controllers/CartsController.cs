@@ -57,9 +57,7 @@ namespace WebStoreAPIWebApp.Controllers
                 return NotFound();
             }
 
-            Cart cart = _context.Carts.Where(x => x.Id == id).First();
-
-
+            Cart cart = await _context.Carts.FindAsync(id);
             cart.CustomerId = cartDTO.CustomerId;
             cart.DeliveryAddress = cartDTO.DeliveryAddress;
 
@@ -124,14 +122,6 @@ namespace WebStoreAPIWebApp.Controllers
         private bool CartExists(int id)
         {
             return _context.Carts.Any(e => e.Id == id);
-        }
-
-        private int CalculatePrice(Cart cart)
-        {
-            return _context.ProductCarts
-                .Where(productCarts => productCarts.CartId == cart.Id)
-                .Sum(productCarts => productCarts.Quantity * _context.Products
-                    .Where(product => product.Id == productCarts.ProductId).First().Price);
         }
     }
 }
