@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebStore Carts</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <style>
+        /* CSS/site.css */
+
+        /* Body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        /* Heading */
+        h1 {
+            color: #333;
+        }
+
+        /* Form */
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Edit Cart Section */
+        #editCart {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+            #editCart input[type="text"], #editCart input[type="submit"] {
+                margin-bottom: 5px;
+            }
+
+        /* Close button */
+        a[aria-label="Close"] {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a[aria-label="Close"]:hover {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <h1>WebStore Carts Management</h1>
+    <h3>Add Cart</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addCart()">
+        <input type="text" id="add-customer-id" placeholder="Customer ID">
+        <input type="text" id="add-delivery-address" placeholder="Delivery Address">
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editCart">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateCart()">
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-customer-id">
+            <input type="text" id="edit-delivery-address">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Customer ID</th>
+            <th>Delivery Address</th>
+        </tr>
+        <tbody id="carts"></tbody>
+    </table>
+
+    <script src="js/cart.js"></script>
+    <script type="text/javascript">
+        getCarts();
+    </script>
+</body>
+</html>
